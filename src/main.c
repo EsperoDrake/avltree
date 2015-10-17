@@ -1,6 +1,15 @@
+/************************************************
+	AVL tree implementation / main file (main.c)
+	Author: Kondakov I.A., M3106
+	Created: $Date: 8:28 PM, October 5, 2015 UTC$
+*************************************************
+*///Edited: $Date: 11:11 AM, October 17, 2015 UTC$
 #include <stdio.h>
 #include "avl.h"
 
+
+#define OUTPUT_MODE 0
+//ifndef OUTPUT_MODE the first input number assumes as mode
 typedef enum {
 	SORTED_PRINTOUT,
 	UNSORTED_PRINTOUT,
@@ -89,8 +98,12 @@ int main(int argc, char *argv[])
 			return EXIT_FAILURE;
 	}
 	
-	scanf("%d", &mode);		// First line - output mode
-
+#ifdef OUTPUT_MODE
+	mode = OUTPUT_MODE;
+#else
+	scanf("%d", &mode);	// First line - output mode
+#endif
+	
 	avlTree = makeTree();	// Make tree from file
 
 	switch (mode)			// Printout
